@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 const links = [
   { href: "/", label: "Beranda" },
   { href: "/#menu", label: "Menu" },
+  { href: "/tentang", label: "Tentang" },
   { href: "/#lokasi", label: "Lokasi" },
 ];
 
