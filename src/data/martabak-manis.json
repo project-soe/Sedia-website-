@@ -1,0 +1,30 @@
+{
+  "name": "Martabak Manis Gincing",
+  "bases": ["Original", "Black Forest", "Taro", "Pandan", "Red Velvet"],
+  "toppings": [
+    { "name": "Susu", "prices": [17000, 18000, 18000, 18000, 18000] },
+    { "name": "Stroberi Susu", "prices": [19000, 22000, 22000, 22000, 22000] },
+    { "name": "Blueberry Susu", "prices": [19000, 22000, 22000, 22000, 22000] },
+    { "name": "Ketan Kelapa", "prices": [20000, 23000, 23000, 23000, 23000] },
+    { "name": "Oreo Susu", "prices": [20000, 23000, 23000, 23000, 23000] },
+    { "name": "Coklat Susu", "prices": [20000, 23000, 23000, 23000, 23000] },
+    { "name": "Kacang Susu", "prices": [20000, 23000, 23000, 23000, 23000] },
+    { "name": "Oreo Keju", "prices": [30000, 33000, 33000, 33000, 33000] },
+    { "name": "Kacang Coklat Susu", "prices": [25000, 28000, 28000, 28000, 28000] },
+    { "name": "Ketan Keju", "prices": [30000, 33000, 33000, 33000, 33000] },
+    { "name": "Stroberi Keju", "prices": [28000, 31000, 31000, 31000, 31000] },
+    { "name": "Coklat Crunchy", "prices": [28000, 32000, 32000, 32000, 32000] },
+    { "name": "Kacang Coklat Wijen", "prices": [28000, 32000, 32000, 32000, 32000] },
+    { "name": "Jagung Susu", "prices": [28000, 30000, 30000, 30000, 30000] },
+    { "name": "Keju Susu", "prices": [30000, 33000, 33000, 33000, 33000] },
+    { "name": "Coklat Keju", "prices": [30000, 33000, 33000, 33000, 33000] },
+    { "name": "Keju Kacang", "prices": [30000, 33000, 33000, 33000, 33000] },
+    { "name": "Jagung Coklat", "prices": [32000, 35000, 35000, 35000, 35000] },
+    { "name": "Jagung Keju", "prices": [33000, 36000, 36000, 36000, 36000] },
+    { "name": "Keju Coklat Crunchy", "prices": [33000, 35000, 35000, 35000, 35000] },
+    { "name": "Kacang Coklat Keju", "prices": [33000, 35000, 35000, 35000, 35000] },
+    { "name": "Spesial", "prices": [40000, 43000, 43000, 43000, 43000] },
+    { "name": "Double Keju", "prices": [40000, 43000, 43000, 43000, 43000] },
+    { "name": "Special Martabak Pizza", "prices": [40000, 43000, 43000, 43000, 43000] }
+  ]
+}

@@ -1,9 +1,10 @@
 [
-  { "id": "martabak-manis", "name": "Martabak Manis", "category": "martabak", "price": 30000, "description": "Tebal, lembut, dengan topping melimpah.", "image": "/images/martabak-manis.jpg", "bestSeller": true, "variants": ["Coklat Keju", "Kacang Coklat", "Keju Susu", "Full Topping"] },
-  { "id": "bolu-gulung", "name": "Bolu Gulung", "category": "basah", "price": 25000, "description": "Bolu lembut dengan isian krim.", "image": "/images/bolu-gulung.jpg" },
-  { "id": "bronis-kukus", "name": "Brownies Kukus", "category": "basah", "price": 20000, "description": "Coklat pekat, lembut, tidak seret.", "image": "/images/brownies.jpg" },
-  { "id": "risoles", "name": "Risoles", "category": "basah", "price": 3000, "description": "Isi sayur dan ayam, renyah di luar.", "image": "/images/risoles.jpg" },
-  { "id": "nastar", "name": "Nastar", "category": "kering", "price": 60000, "description": "Selai nanas, lumer di mulut.", "image": "/images/nastar.jpg" },
-  { "id": "kastengel", "name": "Kastengel", "category": "kering", "price": 65000, "description": "Gurih keju, renyah.", "image": "/images/kastengel.jpg" },
-  { "id": "putri-salju", "name": "Putri Salju", "category": "kering", "price": 55000, "description": "Manis lembut bertabur gula halus.", "image": "/images/putri-salju.jpg" }
+  {
+    "id": "martabak-telor",
+    "name": "Martabak Telor",
+    "category": "martabak",
+    "price": 37000,
+    "description": "Martabak telor gurih.",
+    "image": "/images/martabak-telor.jpg"
+  }
 ]
