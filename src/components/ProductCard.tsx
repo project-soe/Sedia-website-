@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useCart } from "@/hooks/useCart";
 import { formatRupiah } from "@/lib/whatsapp";
@@ -11,6 +12,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
   const { add } = useCart();
   const [variant, setVariant] = useState(product.variants?.[0]);
   const [added, setAdded] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
 
   function handleAdd() {
     add(product, variant);
@@ -27,8 +29,19 @@ export default function ProductCard({ product, index }: { product: Product; inde
       whileHover={{ y: -6 }}
       className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sand"
     >
-      <div className="relative flex h-40 items-center justify-center bg-sand text-7xl">
-        {emoji[product.category]}
+      <div className="relative flex h-48 items-center justify-center overflow-hidden bg-sand text-7xl">
+        {imgFailed ? (
+          emoji[product.category]
+        ) : (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
+            onError={() => setImgFailed(true)}
+          />
+        )}
         {product.bestSeller && (
           <span className="absolute left-3 top-3 rounded-full bg-brown px-3 py-1 text-xs font-semibold text-cream">Best Seller</span>
         )}
