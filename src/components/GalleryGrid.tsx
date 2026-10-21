@@ -27,7 +27,7 @@ export default function GalleryGrid() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.03 }}
-            className="relative aspect-square overflow-hidden rounded-2xl bg-sand"
+            className="relative aspect-square overflow-hidden rounded-2xl bg-soft"
           >
             <Image
               src={g.src}
@@ -56,21 +56,21 @@ export default function GalleryGrid() {
             <button
               onClick={(e) => { e.stopPropagation(); move(-1); }}
               aria-label="Sebelumnya"
-              className="absolute left-3 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-cream text-xl text-brown"
+              className="absolute left-3 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-paper text-xl text-brand"
             >
               ‹
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); move(1); }}
               aria-label="Berikutnya"
-              className="absolute right-3 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-cream text-xl text-brown"
+              className="absolute right-3 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-paper text-xl text-brand"
             >
               ›
             </button>
             <button
               onClick={() => setSelected(null)}
               aria-label="Tutup"
-              className="absolute right-3 top-3 h-11 w-11 rounded-full bg-cream text-xl text-brown"
+              className="absolute right-3 top-3 h-11 w-11 rounded-full bg-paper text-xl text-brand"
             >
               ✕
             </button>

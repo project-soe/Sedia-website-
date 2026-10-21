@@ -26,14 +26,14 @@ export default function MenuSection() {
 
   return (
     <section id="menu" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-16">
-      <h2 className="text-center font-display text-3xl font-bold text-brown md:text-4xl">Menu Kami</h2>
+      <h2 className="text-center font-display text-3xl font-bold text-brand md:text-4xl">Menu Kami</h2>
       <div className="mt-8 flex flex-wrap justify-center gap-2">
         {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setActive(t.key)}
             className={`rounded-full px-5 py-2 text-sm font-medium transition ${
-              active === t.key ? "bg-brown text-cream" : "bg-sand text-brown hover:bg-caramel hover:text-cream"
+              active === t.key ? "bg-brand text-paper" : "bg-soft text-brand hover:bg-accent hover:text-paper"
             }`}
           >
             {t.label}

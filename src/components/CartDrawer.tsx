@@ -16,7 +16,7 @@ export default function CartDrawer() {
           initial={{ scale: 0.85 }}
           animate={{ scale: 1 }}
           onClick={() => setOpen(true)}
-          className="fixed bottom-5 right-5 z-40 rounded-full bg-brown px-5 py-3 text-sm font-semibold text-cream shadow-lg"
+          className="fixed bottom-5 right-5 z-40 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-paper shadow-lg"
         >
           🛒 {count} item · {formatRupiah(total)}
         </motion.button>
@@ -35,14 +35,14 @@ export default function CartDrawer() {
         {isOpen && (
           <motion.aside
             key="panel"
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-cream shadow-xl"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-paper shadow-xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
           >
-            <div className="flex items-center justify-between border-b border-sand px-5 py-4">
-              <h2 className="font-display text-xl font-bold text-brown">Keranjang Pesanan</h2>
+            <div className="flex items-center justify-between border-b border-soft px-5 py-4">
+              <h2 className="font-display text-xl font-bold text-brand">Keranjang Pesanan</h2>
               <button onClick={() => setOpen(false)} aria-label="Tutup" className="text-2xl">✕</button>
             </div>
             <div className="flex-1 overflow-y-auto p-5">

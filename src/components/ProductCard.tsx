@@ -27,9 +27,9 @@ export default function ProductCard({ product, index }: { product: Product; inde
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: (index % 3) * 0.1 }}
       whileHover={{ y: -6 }}
-      className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sand"
+      className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-soft"
     >
-      <div className="relative flex h-48 items-center justify-center overflow-hidden bg-sand text-7xl">
+      <div className="relative flex h-48 items-center justify-center overflow-hidden bg-soft text-7xl">
         {imgFailed ? (
           emoji[product.category]
         ) : (
@@ -43,17 +43,17 @@ export default function ProductCard({ product, index }: { product: Product; inde
           />
         )}
         {product.bestSeller && (
-          <span className="absolute left-3 top-3 rounded-full bg-brown px-3 py-1 text-xs font-semibold text-cream">Best Seller</span>
+          <span className="absolute left-3 top-3 rounded-full bg-sun px-3 py-1 text-xs font-semibold text-brand-dark">Best Seller</span>
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-display text-lg font-bold text-brown">{product.name}</h3>
+        <h3 className="font-display text-lg font-bold text-brand">{product.name}</h3>
         <p className="mt-1 text-sm opacity-75">{product.description}</p>
         {product.variants && (
           <select
             value={variant}
             onChange={(e) => setVariant(e.target.value)}
-            className="mt-3 w-full rounded-xl border border-sand bg-cream px-3 py-2 text-sm"
+            className="mt-3 w-full rounded-xl border border-soft bg-paper px-3 py-2 text-sm"
           >
             {product.variants.map((v) => (
               <option key={v}>{v}</option>
@@ -61,11 +61,11 @@ export default function ProductCard({ product, index }: { product: Product; inde
           </select>
         )}
         <div className="mt-4 flex items-center justify-between">
-          <span className="font-semibold text-caramel">{formatRupiah(product.price)}</span>
+          <span className="font-semibold text-accent">{formatRupiah(product.price)}</span>
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={handleAdd}
-            className="rounded-full bg-brown px-4 py-2 text-xs font-semibold text-cream transition hover:bg-choco"
+            className="rounded-full bg-brand px-4 py-2 text-xs font-semibold text-paper transition hover:bg-brand-dark"
           >
             {added ? "✓ Ditambah" : "+ Tambah"}
           </motion.button>

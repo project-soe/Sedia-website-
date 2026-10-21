@@ -7,12 +7,12 @@ export default function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
       <div>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-3 text-sm font-semibold tracking-widest text-caramel">
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-3 text-sm font-semibold tracking-widest text-accent">
           BEST SELLER KAMI
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="font-display text-4xl font-bold leading-tight text-brown md:text-6xl"
+          className="font-display text-4xl font-bold leading-tight text-brand md:text-6xl"
         >
           Martabak Manis Tebal, Lembut & Manisnya Pas
         </motion.h1>
@@ -26,17 +26,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
           className="mt-8 flex flex-wrap gap-3"
         >
-          <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-brown px-6 py-3 text-sm font-semibold text-cream transition hover:scale-105 hover:bg-choco">
+          <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition hover:scale-105 hover:bg-brand-dark">
             Pesan via WhatsApp
           </a>
-          <a href="#menu" className="rounded-full border-2 border-brown px-6 py-3 text-sm font-semibold text-brown transition hover:bg-brown hover:text-cream">
+          <a href="#menu" className="rounded-full border-2 border-brand px-6 py-3 text-sm font-semibold text-brand transition hover:bg-brand hover:text-paper">
             Lihat Menu
           </a>
         </motion.div>
       </div>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, type: "spring" }}
-        className="flex h-72 items-center justify-center rounded-[3rem] bg-sand md:h-96"
+        className="flex h-72 items-center justify-center rounded-[3rem] bg-soft md:h-96"
       >
         <motion.span
           animate={{ y: [0, -16, 0], rotate: [-4, 4, -4] }}

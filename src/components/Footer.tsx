@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   return (
-    <footer id="lokasi" className="mt-10 scroll-mt-20 bg-choco text-cream">
+    <footer id="lokasi" className="mt-10 scroll-mt-20 bg-brand-dark text-paper">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-2">
         <div>
           <h3 className="font-display text-2xl font-bold">{siteConfig.name}</h3>

@@ -37,9 +37,9 @@ export default function MartabakCard() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sand sm:col-span-2 lg:col-span-3 md:grid md:grid-cols-2"
+      className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-soft sm:col-span-2 lg:col-span-3 md:grid md:grid-cols-2"
     >
-      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-sand text-8xl md:h-auto md:min-h-80">
+      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-soft text-8xl md:h-auto md:min-h-80">
         {imgFailed ? (
           "🥞"
         ) : (
@@ -52,10 +52,10 @@ export default function MartabakCard() {
             onError={() => setImgFailed(true)}
           />
         )}
-        <span className="absolute left-3 top-3 rounded-full bg-brown px-3 py-1 text-xs font-semibold text-cream">Best Seller</span>
+        <span className="absolute left-3 top-3 rounded-full bg-sun px-3 py-1 text-xs font-semibold text-brand-dark">Best Seller</span>
       </div>
       <div className="p-5 md:p-8">
-        <h3 className="font-display text-2xl font-bold text-brown">{data.name}</h3>
+        <h3 className="font-display text-2xl font-bold text-brand">{data.name}</h3>
         <p className="mt-4 text-sm font-semibold">Pilih adonan</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {data.bases.map((b, i) => (
@@ -63,7 +63,7 @@ export default function MartabakCard() {
               key={b}
               onClick={() => setBase(i)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                base === i ? "bg-brown text-cream" : "bg-sand text-brown hover:bg-caramel hover:text-cream"
+                base === i ? "bg-brand text-paper" : "bg-soft text-brand hover:bg-accent hover:text-paper"
               }`}
             >
               {b}
@@ -74,7 +74,7 @@ export default function MartabakCard() {
         <select
           value={top}
           onChange={(e) => setTop(Number(e.target.value))}
-          className="mt-2 w-full rounded-xl border border-sand bg-cream px-3 py-3 text-sm"
+          className="mt-2 w-full rounded-xl border border-soft bg-paper px-3 py-3 text-sm"
         >
           {data.toppings.map((t, i) => (
             <option key={t.name} value={i}>
@@ -87,14 +87,14 @@ export default function MartabakCard() {
             key={price}
             initial={{ scale: 1.15, opacity: 0.5 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="text-2xl font-bold text-caramel"
+            className="text-2xl font-bold text-accent"
           >
             {formatRupiah(price)}
           </motion.span>
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={handleAdd}
-            className="rounded-full bg-brown px-6 py-3 text-sm font-semibold text-cream transition hover:bg-choco"
+            className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition hover:bg-brand-dark"
           >
             {added ? "✓ Ditambah" : "+ Tambah"}
           </motion.button>

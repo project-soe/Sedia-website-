@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #fff8f0;
-  --color-sand: #f3e3d0;
-  --color-caramel: #c98a4b;
-  --color-brown: #7b4a2d;
-  --color-choco: #3e2415;
+  --color-paper: #fffbea;
+  --color-soft: #fcefa8;
+  --color-sun: #ffd93b;
+  --color-accent: #25804a;
+  --color-brand: #116a3a;
+  --color-brand-dark: #0b3d22;
 }
 
 @theme inline {
@@ -15,7 +16,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  background: #fff8f0;
-  color: #3e2415;
+  background: #fffbea;
+  color: #12301f;
   font-family: var(--font-poppins), sans-serif;
 }
