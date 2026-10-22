@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import { fallbackMenu } from "./menu";
+import { fallbackMenu, slugify } from "./menu";
 import type { MartabakMenu, MenuData, MenuProduct, Settings } from "@/types/menu";
 import type { Category } from "@/types/product";
 
@@ -71,6 +71,7 @@ function parseMartabak(rows: string[][]): MartabakMenu {
   const header = rows[0]?.map((h) => h.trim()) ?? [];
   let end = header.findIndex((h) => h.toLowerCase() === "tersedia");
   if (end === -1) end = header.length;
+  const fotoCol = header.findIndex((h) => h.toLowerCase() === "foto");
   const bases = header.slice(1, end).filter(Boolean);
   if (bases.length === 0) throw new Error("Judul adonan tidak ditemukan");
 
@@ -79,7 +80,12 @@ function parseMartabak(rows: string[][]): MartabakMenu {
     if (!name) return [];
     const prices = bases.map((_, i) => parsePrice(r[i + 1]));
     if (prices.some((p) => p === 0)) return []; // harga kosong/salah: baris dilewati
-    return [{ name, prices, available: isYes(r[end]) }];
+    const foto = fotoCol >= 0 ? (r[fotoCol] ?? "").trim() : "";
+    const image =
+      foto && !/^https?:/i.test(foto)
+        ? foto.startsWith("/") ? foto : `/images/martabak/${foto}`
+        : `/images/martabak/${slugify(name)}.jpg`;
+    return [{ name, prices, available: isYes(r[end]), image }];
   });
   if (toppings.length === 0) throw new Error("Tidak ada topping yang valid");
   return { name: fallbackMenu.martabak.name, bases, toppings };

@@ -10,6 +10,7 @@ export interface MartabakTopping {
   name: string;
   prices: number[]; // urutan sama dengan bases
   available: boolean;
+  image: string;
 }
 
 export interface MartabakMenu {

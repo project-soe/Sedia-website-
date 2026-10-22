@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import MartabakPhoto from "./MartabakPhoto";
 import { motion } from "framer-motion";
 import { useCart } from "@/hooks/useCart";
 import { useMenu } from "@/hooks/useMenu";
@@ -14,7 +14,6 @@ export default function MartabakCard() {
   const [base, setBase] = useState(0);
   const [top, setTop] = useState(0);
   const [added, setAdded] = useState(false);
-  const [imgFailed, setImgFailed] = useState(false);
 
   const baseIdx = Math.min(base, data.bases.length - 1);
   const firstAvail = data.toppings.findIndex((t) => t.available);
@@ -32,7 +31,7 @@ export default function MartabakCard() {
       category: "martabak",
       price,
       description: "",
-      image: "/images/martabak-manis.jpg",
+      image: topping.image,
     };
     add(product, `${data.bases[baseIdx]} • ${topping.name}`);
     setAdded(true);
@@ -47,18 +46,7 @@ export default function MartabakCard() {
       className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-soft sm:col-span-2 lg:col-span-3 md:grid md:grid-cols-2"
     >
       <div className="relative flex h-56 items-center justify-center overflow-hidden bg-soft text-8xl md:h-auto md:min-h-80">
-        {imgFailed ? (
-          "🥞"
-        ) : (
-          <Image
-            src="/images/martabak-manis.jpg"
-            alt={data.name}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-            onError={() => setImgFailed(true)}
-          />
-        )}
+        <MartabakPhoto candidates={[topping?.image, "/images/martabak-manis.jpg"]} alt={data.name} />
         <span className="absolute left-3 top-3 rounded-full bg-sun px-3 py-1 text-xs font-semibold text-brand-dark">Best Seller</span>
       </div>
       <div className="p-5 md:p-8">
