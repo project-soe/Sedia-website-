@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useCart } from "@/hooks/useCart";
 import { useMenu } from "@/hooks/useMenu";
 import { formatRupiah } from "@/lib/whatsapp";
+import { slugify } from "@/lib/menu";
 import type { Product } from "@/types/product";
 
 export default function MartabakCard() {
@@ -22,6 +23,15 @@ export default function MartabakCard() {
   const closed = !menu.settings.tokoBuka;
   const canOrder = !closed && topping !== undefined;
   const price = topping?.prices[baseIdx] ?? 0;
+  const baseSlug = slugify(data.bases[baseIdx] ?? "");
+  const photoCandidates = topping
+    ? [
+        `/images/martabak/kombinasi/${slugify(topping.name)}-${baseSlug}.jpg`,
+        `/images/martabak/adonan/${baseSlug}.jpg`,
+        topping.image,
+        "/images/martabak-manis.jpg",
+      ]
+    : ["/images/martabak-manis.jpg"];
 
   function handleAdd() {
     if (!topping) return;
@@ -46,7 +56,7 @@ export default function MartabakCard() {
       className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-soft sm:col-span-2 lg:col-span-3 md:grid md:grid-cols-2"
     >
       <div className="relative flex h-56 items-center justify-center overflow-hidden bg-soft text-8xl md:h-auto md:min-h-80">
-        <MartabakPhoto candidates={[topping?.image, "/images/martabak-manis.jpg"]} alt={data.name} />
+        <MartabakPhoto candidates={photoCandidates} alt={data.name} />
         <span className="absolute left-3 top-3 rounded-full bg-sun px-3 py-1 text-xs font-semibold text-brand-dark">Best Seller</span>
       </div>
       <div className="p-5 md:p-8">
