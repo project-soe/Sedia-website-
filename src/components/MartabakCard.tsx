@@ -3,22 +3,29 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useCart } from "@/hooks/useCart";
+import { useMenu } from "@/hooks/useMenu";
 import { formatRupiah } from "@/lib/whatsapp";
-import menu from "@/data/martabak-manis.json";
-import type { MartabakMenu } from "@/types/martabak";
 import type { Product } from "@/types/product";
-
-const data = menu as MartabakMenu;
 
 export default function MartabakCard() {
   const { add } = useCart();
+  const { menu } = useMenu();
+  const data = menu.martabak;
   const [base, setBase] = useState(0);
   const [top, setTop] = useState(0);
   const [added, setAdded] = useState(false);
   const [imgFailed, setImgFailed] = useState(false);
-  const price = data.toppings[top].prices[base];
+
+  const baseIdx = Math.min(base, data.bases.length - 1);
+  const firstAvail = data.toppings.findIndex((t) => t.available);
+  const topIdx = data.toppings[top]?.available ? top : firstAvail;
+  const topping = data.toppings[topIdx];
+  const closed = !menu.settings.tokoBuka;
+  const canOrder = !closed && topping !== undefined;
+  const price = topping?.prices[baseIdx] ?? 0;
 
   function handleAdd() {
+    if (!topping) return;
     const product: Product = {
       id: "martabak-manis-gincing",
       name: data.name,
@@ -27,7 +34,7 @@ export default function MartabakCard() {
       description: "",
       image: "/images/martabak-manis.jpg",
     };
-    add(product, `${data.bases[base]} • ${data.toppings[top].name}`);
+    add(product, `${data.bases[baseIdx]} • ${topping.name}`);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -63,7 +70,7 @@ export default function MartabakCard() {
               key={b}
               onClick={() => setBase(i)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                base === i ? "bg-brand text-paper" : "bg-soft text-brand hover:bg-accent hover:text-paper"
+                baseIdx === i ? "bg-brand text-paper" : "bg-soft text-brand hover:bg-accent hover:text-paper"
               }`}
             >
               {b}
@@ -72,13 +79,13 @@ export default function MartabakCard() {
         </div>
         <p className="mt-4 text-sm font-semibold">Pilih topping</p>
         <select
-          value={top}
+          value={topIdx}
           onChange={(e) => setTop(Number(e.target.value))}
           className="mt-2 w-full rounded-xl border border-soft bg-paper px-3 py-3 text-sm"
         >
           {data.toppings.map((t, i) => (
-            <option key={t.name} value={i}>
-              {t.name} — {formatRupiah(t.prices[base])}
+            <option key={t.name} value={i} disabled={!t.available}>
+              {t.name} — {t.available ? formatRupiah(t.prices[baseIdx]) : "Habis"}
             </option>
           ))}
         </select>
@@ -89,14 +96,15 @@ export default function MartabakCard() {
             animate={{ scale: 1, opacity: 1 }}
             className="text-2xl font-bold text-accent"
           >
-            {formatRupiah(price)}
+            {topping ? formatRupiah(price) : "-"}
           </motion.span>
           <motion.button
-            whileTap={{ scale: 0.92 }}
+            whileTap={canOrder ? { scale: 0.92 } : undefined}
+            disabled={!canOrder}
             onClick={handleAdd}
-            className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition hover:bg-brand-dark"
+            className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {added ? "✓ Ditambah" : "+ Tambah"}
+            {closed ? "Toko tutup" : !topping ? "Habis" : added ? "✓ Ditambah" : "+ Tambah"}
           </motion.button>
         </div>
       </div>
