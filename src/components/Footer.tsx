@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import OpenHours from "./OpenHours";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
         </div>
         <div className="space-y-1 text-sm">
           <p>📍 {siteConfig.address}</p>
-          <p>🕗 {siteConfig.openHours}</p>
+          <OpenHours />
           <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-block pt-2 underline">
             💬 Chat WhatsApp
           </a>

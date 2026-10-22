@@ -3,16 +3,20 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useCart } from "@/hooks/useCart";
+import { useMenu } from "@/hooks/useMenu";
 import { formatRupiah } from "@/lib/whatsapp";
-import type { Product } from "@/types/product";
+import type { MenuProduct } from "@/types/menu";
 
 const emoji = { martabak: "🥞", basah: "🍰", kering: "🍪" };
 
-export default function ProductCard({ product, index }: { product: Product; index: number }) {
+export default function ProductCard({ product, index }: { product: MenuProduct; index: number }) {
   const { add } = useCart();
+  const { menu } = useMenu();
   const [variant, setVariant] = useState(product.variants?.[0]);
   const [added, setAdded] = useState(false);
   const [imgFailed, setImgFailed] = useState(false);
+  const closed = !menu.settings.tokoBuka;
+  const canOrder = product.available && !closed;
 
   function handleAdd() {
     add(product, variant);
@@ -38,7 +42,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
             alt={product.name}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover"
+            className={`object-cover ${product.available ? "" : "grayscale"}`}
             onError={() => setImgFailed(true)}
           />
         )}
@@ -63,11 +67,12 @@ export default function ProductCard({ product, index }: { product: Product; inde
         <div className="mt-4 flex items-center justify-between">
           <span className="font-semibold text-accent">{formatRupiah(product.price)}</span>
           <motion.button
-            whileTap={{ scale: 0.92 }}
+            whileTap={canOrder ? { scale: 0.92 } : undefined}
+            disabled={!canOrder}
             onClick={handleAdd}
-            className="rounded-full bg-brand px-4 py-2 text-xs font-semibold text-paper transition hover:bg-brand-dark"
+            className="rounded-full bg-brand px-4 py-2 text-xs font-semibold text-paper transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {added ? "✓ Ditambah" : "+ Tambah"}
+            {closed ? "Toko tutup" : !product.available ? "Habis" : added ? "✓ Ditambah" : "+ Tambah"}
           </motion.button>
         </div>
       </div>
